@@ -57,17 +57,17 @@ public class PlayerConcroller : MonoBehaviourPunCallbacks
 
     void Control()
     {
-        if (Input.GetKey(KeyCode.LeftArrow))
+        if (Input.GetKey(KeyCode.A))
         {
             _transform.position += Vector3.left * speed * Time.deltaTime;
             _spr.flipX = true;
         }
-        if (Input.GetKey(KeyCode.RightArrow))
+        if (Input.GetKey(KeyCode.D))
         {
             _transform.position += Vector3.right * speed * Time.deltaTime;
             _spr.flipX = false;
         }
-        if (Input.GetKeyDown(KeyCode.Z))
+        if (Input.GetKeyDown(KeyCode.W))
         {
             if(jumpAbility > 0)
             {
@@ -76,7 +76,7 @@ public class PlayerConcroller : MonoBehaviourPunCallbacks
             }
             
         }
-        if (Input.GetKeyDown(KeyCode.X))
+        if (Input.GetKeyDown(KeyCode.Space))
         {
             float force = _spr.flipX ? -bulletForce : bulletForce;  //check player facing direction
             float _offset = _spr.flipX ? -0.2f : 0.2f;
