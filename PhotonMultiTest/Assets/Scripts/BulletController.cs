@@ -10,7 +10,7 @@ public class BulletController : MonoBehaviour
 
     void Start()
     {
-        timer = 1;
+        timer = 0.7f;
         view = this.gameObject.GetComponent<PhotonView>();
         _rb = this.gameObject.GetComponent<Rigidbody2D>();
         if(!view.IsMine)
@@ -25,8 +25,13 @@ public class BulletController : MonoBehaviour
             timer -= Time.deltaTime;
             if(timer <= 0)
             {
-                PhotonNetwork.Destroy(this.gameObject);
+                removeBullet();
             }
         }
+    }
+
+    public void removeBullet()
+    {
+        PhotonNetwork.Destroy(this.gameObject);
     }
 }
