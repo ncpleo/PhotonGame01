@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Bullet
   - Ground
+  - GameMusic
   layers:
   - Default
   - TransparentFX

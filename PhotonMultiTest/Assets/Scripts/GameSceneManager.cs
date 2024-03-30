@@ -17,6 +17,8 @@ public class GameSceneManager : MonoBehaviourPunCallbacks
 
     public Dictionary<Player, bool> alivePlayerMap = new Dictionary<Player, bool>();   //record current game state
 
+    bool _scene = true;
+
     void Start()
     {
         _pv = this.gameObject.GetComponent<PhotonView>();
@@ -120,7 +122,17 @@ public class GameSceneManager : MonoBehaviourPunCallbacks
     void ReloadGame(PhotonMessageInfo info)
     {
         //SceneManager.LoadScene("GameScene");
-        PhotonNetwork.LoadLevel("GameScene");
+        if (_scene)
+        {
+            PhotonNetwork.LoadLevel("GameScene");
+            _scene = false;
+        }
+        else
+        {
+            PhotonNetwork.LoadLevel("GameScene 2");
+            _scene = true;
+        }
+        
     }
 
     public void CallRpcSendMessageToAll(string message)
@@ -131,7 +143,7 @@ public class GameSceneManager : MonoBehaviourPunCallbacks
     [PunRPC]
     void RpcSendMessage(string message, PhotonMessageInfo info) //PhotonMessageInfo: telling who send the message
     {
-        if(messageList.Count >= 10)       //check the message list size
+        if(messageList.Count >= 8)       //check the message list size
         {
             messageList.RemoveAt(0);     //remove the oldest message to keep 10 messages only on the message box
         }
