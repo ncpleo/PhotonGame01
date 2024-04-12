@@ -16,4 +16,14 @@ public class StartSceneManager : MonoBehaviourPunCallbacks
         print("Connected");
         SceneManager.LoadScene("LobbyScene");
     }
+
+    public void OnClickOption()
+    {
+        
+    }
+
+    public void OnClickQuit()
+    {
+        Application.Quit();
+    }
 }
