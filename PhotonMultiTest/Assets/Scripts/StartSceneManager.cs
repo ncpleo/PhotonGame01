@@ -17,11 +17,6 @@ public class StartSceneManager : MonoBehaviourPunCallbacks
         SceneManager.LoadScene("LobbyScene");
     }
 
-    public void OnClickOption()
-    {
-        
-    }
-
     public void OnClickQuit()
     {
         Application.Quit();

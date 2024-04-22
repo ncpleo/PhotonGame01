@@ -5,6 +5,7 @@ using UnityEngine.UI;
 using System.Collections.Generic;
 using Photon.Realtime;
 using System.Text;
+using TMPro;
 
 public class LobbySceneManager : MonoBehaviourPunCallbacks
 {
@@ -13,17 +14,19 @@ public class LobbySceneManager : MonoBehaviourPunCallbacks
     [SerializeField]
     InputField inputPlayerName;
     [SerializeField]
-    Text textRoomList;
+    TMP_Text textRoomList;
     
 
     void Start()
     {
         if (!PhotonNetwork.IsConnected)
         {
+            //Go back to the start scene every new run
             SceneManager.LoadScene("StartScene");
         }
         else
         {
+            //join back the lobby while leave from a room
             if(PhotonNetwork.CurrentLobby == null)
             {
                 PhotonNetwork.JoinLobby();
@@ -98,7 +101,7 @@ public class LobbySceneManager : MonoBehaviourPunCallbacks
             print(roomInfo);
             if(roomInfo.PlayerCount > 0)
             {
-                sb.AppendLine(">> " + roomInfo.Name);
+                sb.AppendLine(">>>  " + roomInfo.Name);
             }
             
         }

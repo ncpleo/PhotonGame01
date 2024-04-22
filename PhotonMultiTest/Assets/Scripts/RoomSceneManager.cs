@@ -4,13 +4,14 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using System.Text;
 using Photon.Realtime;
+using TMPro;
 
 public class RoomSceneManager : MonoBehaviourPunCallbacks
 {
     [SerializeField]
-    Text textRoomName;
+    TMP_Text textRoomName;
     [SerializeField]
-    Text textPlayerList;
+    TMP_Text textPlayerList;
     [SerializeField]
     Button buttonStartGame;
 
@@ -29,6 +30,7 @@ public class RoomSceneManager : MonoBehaviourPunCallbacks
         buttonStartGame.interactable = PhotonNetwork.IsMasterClient;
     }
 
+    //check if the player is the room holder
     public override void OnMasterClientSwitched(Player newMasterClient)
     {
         buttonStartGame.interactable = PhotonNetwork.IsMasterClient;
